@@ -1,4 +1,4 @@
-import DashboardContainer from '../../containers/Dashboard/DashboardContainer';
+import DashboardContainer from './DashboardContainer';
 
 export default function Dashboard() {
     
