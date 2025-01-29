@@ -23,4 +23,4 @@ customHeaders:
                 media-src 'self'; 
                 frame-src 'self'; 
                 font-src 'self'; 
-                connect-src 'self' http://localhost:* mydatahelps.org;"
+                connect-src 'self' http://localhost:* mydatahelps.org mydatahelps.dev;"
