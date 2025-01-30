@@ -2,6 +2,17 @@ import { Layout, Card } from '@careevolution/mydatahelps-ui';
 import "./Dashboard.css"
 import MyDataHelps from "@careevolution/mydatahelps-js";
 
+declare global {
+    interface Window {
+        webkit?: {
+            messageHandlers: {
+                ScanCode?: {
+                    postMessage: (message: string) => void;
+                };
+            };
+        };
+    }
+}
 
 export default function Dashboard() {
     
@@ -11,9 +22,9 @@ export default function Dashboard() {
 
 	function scanCode() {
 		console.log('ScanCode tapped');
-        if (window.webkit.messageHandlers.ScanCode) {
+        if (window.webkit?.messageHandlers.ScanCode) {
 			console.log('inside ScanCode check');
-            window.webkit.messageHandlers.ScanCode.postMessage('');
+            window.webkit?.messageHandlers.ScanCode.postMessage('');
         }
     }
 
