@@ -27,7 +27,7 @@ export default function Dashboard() {
     }
 
 	function modal() {
-		MyDataHelps.openApplication('./modal', { 'modal': true });
+		MyDataHelps.openApplication('https://qa-testing.dtp3p3eah7pnu.amplifyapp.com/modal', { 'modal': true });
 	}
 
 	return (
