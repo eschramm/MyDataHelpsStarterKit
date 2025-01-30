@@ -26,6 +26,10 @@ export default function Dashboard() {
         }
     }
 
+	function modal() {
+		MyDataHelps.openApplication('https://qa-testing.dtp3p3eah7pnu.amplifyapp.com/dashboard', { 'modal': true });
+	}
+
 	return (
 		<div className='dashboard-container'>
 		<Layout colorScheme="auto">
@@ -40,6 +44,11 @@ export default function Dashboard() {
 					<button className='cta-button' onClick={() => { scanCode(); }}>
 						<div className='cta-button-title'>Open Scan Code</div>
 					</button>
+
+					<button className='cta-button' onClick={() => { modal(); }}>
+						<div className='cta-button-title'>Open in Modal</div>
+					</button>
+					
 				</div>
 			</Card>
 		</Layout>
