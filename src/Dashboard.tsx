@@ -25,6 +25,7 @@ export default function Dashboard() {
         if (window.webkit?.messageHandlers.ScanCode) {
 			console.log('inside ScanCode check');
             window.webkit?.messageHandlers.ScanCode.postMessage('');
+			console.log('after call to ScanCode.postMessage');
         }
     }
 
