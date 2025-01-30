@@ -14,7 +14,7 @@ declare global {
     }
 }
 
-export default function Dashboard() {
+export default function ModalDashboard() {
     
 	function openSurvey(surveyName: string) {
 		MyDataHelps.startSurvey(surveyName);
@@ -26,16 +26,16 @@ export default function Dashboard() {
         }
     }
 
-	function modal() {
-		MyDataHelps.openApplication('./modal', { 'modal': true });
+	function closeModal() {
+		MyDataHelps.dismiss();
 	}
 
 	return (
 		<div className='dashboard-container'>
 		<Layout colorScheme="auto">
 			<Card>
-				<div className='card-innards'>
-					<h1>Testing Stuff - Main Dashboard</h1>
+				<div className='card-innards modal'>
+					<h1>Testing Stuff - Modal</h1>
 					
 					<button className='cta-button' onClick={() => { openSurvey('Full Battery Test'); }}>
 						<div className='cta-button-title'>Open Survey example</div>
@@ -45,8 +45,8 @@ export default function Dashboard() {
 						<div className='cta-button-title'>Open Scan Code</div>
 					</button>
 
-					<button className='cta-button' onClick={() => { modal(); }}>
-						<div className='cta-button-title'>Open in Modal</div>
+					<button className='cta-button' onClick={() => { closeModal(); }}>
+						<div className='cta-button-title'>Close Modal</div>
 					</button>
 					
 				</div>

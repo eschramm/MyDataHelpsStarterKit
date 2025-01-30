@@ -4,6 +4,10 @@
     padding-bottom: calc(env(safe-area-inset-bottom, 0));
     background-color: #EEEEEE;
 }
+.modal
+{
+    background-color: peachpuff;    
+}
 
 .card-innards
 {
