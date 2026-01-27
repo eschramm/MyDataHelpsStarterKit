@@ -40,6 +40,9 @@ export default function Dashboard() {
 			<Card>
 				<div className='card-innards'>
 					<h1>Testing Stuff - Main Dashboard</h1>
+					<div>URL: https://qa-testing.dtp3p3eah7pnu.amplifyapp.com</div>
+					<div>Repo: eschramm/MyDataHelpsStarterKit</div>
+					<div>Branch: qa-testing</div>
 					
 					<button className='cta-button' onClick={() => { openSurvey('Full Battery Test'); }}>
 						<div className='cta-button-title'>Open Survey example</div>
