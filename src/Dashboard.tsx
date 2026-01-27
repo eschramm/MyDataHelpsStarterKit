@@ -30,6 +30,10 @@ export default function Dashboard() {
 		MyDataHelps.openApplication('https://qa-testing.dtp3p3eah7pnu.amplifyapp.com/modal', { 'modal': true });
 	}
 
+	function openExternalLink() {
+		MyDataHelps.openExternalUrl('https://www.careevolution.com');
+	}
+
 	return (
 		<div className='dashboard-container'>
 		<Layout colorScheme="auto">
@@ -47,6 +51,10 @@ export default function Dashboard() {
 
 					<button className='cta-button' onClick={() => { modal(); }}>
 						<div className='cta-button-title'>Open in Modal</div>
+					</button>
+
+					<button className='cta-button' onClick={() => { openExternalLink(); }}>
+						<div className='cta-button-title'>OpenExternalLink</div>
 					</button>
 					
 				</div>
