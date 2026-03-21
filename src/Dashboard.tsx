@@ -1,21 +1,12 @@
+import { useState } from 'react';
 import { Layout, Card } from '@careevolution/mydatahelps-ui';
 import "./Dashboard.css"
 import MyDataHelps from "@careevolution/mydatahelps-js";
 
-declare global {
-    interface Window {
-        webkit?: {
-            messageHandlers: {
-                ScanCode?: {
-                    postMessage: (message: string) => void;
-                };
-            };
-        };
-    }
-}
-
 export default function Dashboard() {
-    
+	const [hkStatusMessage, setHkStatusMessage] = useState('');
+	const [isSyncing, setIsSyncing] = useState(false);
+
 	function openSurvey(surveyName: string) {
 		MyDataHelps.startSurvey(surveyName);
 	}
@@ -32,6 +23,38 @@ export default function Dashboard() {
 
 	function openExternalLink() {
 		MyDataHelps.openExternalUrl('https://www.careevolution.com');
+	}
+
+	function checkHKStatus() {
+		setIsSyncing(true);
+		const myDataHelps = MyDataHelps as any;
+		if (typeof myDataHelps.getAppleHealthStatus === 'function') {
+			myDataHelps.getAppleHealthStatus()
+				.then((status: unknown) => {
+					const text = `HK status: ${JSON.stringify(status)}`;
+					console.log(text);
+					setHkStatusMessage(text);
+				})
+				.catch((error: unknown) => {
+					const text = `Failed to get Apple Health status: ${JSON.stringify(error)}`;
+					console.error(text);
+					setHkStatusMessage(text);
+				})
+				.finally(() => {
+					setIsSyncing(false);
+				});
+		} else if (window.webkit?.messageHandlers?.GetAppleHealthStatus?.postMessage) {
+			window.webkit.messageHandlers.GetAppleHealthStatus.postMessage({ messageID: Date.now() });
+			const text = 'Triggered webkit GetAppleHealthStatus message handler (native).';
+			console.log(text);
+			setHkStatusMessage(text);
+			setIsSyncing(false);
+		} else {
+			const text = 'No Apple Health status method available on MyDataHelps or webkit handlers.';
+			console.warn(text);
+			setHkStatusMessage(text);
+			setIsSyncing(false);
+		}
 	}
 
 	return (
@@ -55,6 +78,17 @@ export default function Dashboard() {
 					<button className='cta-button' onClick={() => { modal(); }}>
 						<div className='cta-button-title'>Open in Modal</div>
 					</button>
+
+					<div className='hk-status-row'>
+						<button className='cta-button' onClick={() => { checkHKStatus(); }}>
+							<div className='cta-button-title'>Check HK Status</div>
+						</button>
+						<span className={`sync-indicator ${isSyncing ? 'enabled' : ''}`}>Syncing...</span>
+					</div>
+
+					{hkStatusMessage && (
+						<div className='hk-status-message'>{hkStatusMessage}</div>
+					)}
 
 					<button className='cta-button' onClick={() => { openExternalLink(); }}>
 						<div className='cta-button-title'>OpenExternalLink</div>

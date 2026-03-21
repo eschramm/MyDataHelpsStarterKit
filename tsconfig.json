@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
     "types": ["vite/client"],
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "paths": {
+      "@careevolution/mydatahelps-ui": ["./src/types/careevolution-mydatahelps-ui.d.ts"]
+    },
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",

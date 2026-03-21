@@ -2,18 +2,6 @@ import { Layout, Card } from '@careevolution/mydatahelps-ui';
 import "./Dashboard.css"
 import MyDataHelps from "@careevolution/mydatahelps-js";
 
-declare global {
-    interface Window {
-        webkit?: {
-            messageHandlers: {
-                ScanCode?: {
-                    postMessage: (message: string) => void;
-                };
-            };
-        };
-    }
-}
-
 export default function ModalDashboard() {
     
 	function openSurvey(surveyName: string) {

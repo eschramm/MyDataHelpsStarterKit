@@ -16,10 +16,10 @@ export default function () {
 	}, []);
 
 	function initialize() {
-		var loadData = function () {
-			var allTasks: SurveyTask[] = [];
-			var querySurveyTasksPage = function (pageID: Guid | null) {
-				var parameters: SurveyTaskQueryParameters = {}
+		const loadData = function () {
+			let allTasks: SurveyTask[] = [];
+			const querySurveyTasksPage = function (pageID: Guid | null) {
+				const parameters: SurveyTaskQueryParameters = {}
 				if (pageID) {
 					parameters.pageID = pageID;
 				}

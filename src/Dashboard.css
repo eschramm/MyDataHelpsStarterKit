@@ -43,3 +43,38 @@
     font-size: 16px;
     font-weight: 600;
 }
+
+.hk-status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.sync-indicator {
+    color: #444;
+    padding: 4px 8px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    background-color: #eee;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.sync-indicator.enabled {
+    opacity: 1;
+    font-weight: 700;
+}
+
+.hk-status-message {
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #aaa;
+    background: #f7f7f7;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
